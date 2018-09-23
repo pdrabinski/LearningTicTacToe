@@ -32,12 +32,12 @@ function initGame(id) {
     game.user = '<span>X</span>';
     game.computer = '<span>O</span>';
     setCurrPl('user')
-    $.get('gamelogic.py/start_game', {user:'x', comp:'o'});
+    $.get('/start_game/', {user:'x', comp:'o'});
     console.log('user is x, computer is o');
   } else if (id === 'o') {
     game.user = '<span>O</span>';
     game.computer = '<span>X</span>';
-    $.get('gamelogic.py/start_game', {user:'o', comp:'x'});
+    $.get('/start_game/', {user:'o', comp:'x'});
     console.log('computer is x, user is o');
     setCurrPl('computer');
     comp();
