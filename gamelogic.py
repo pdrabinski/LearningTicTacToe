@@ -3,15 +3,15 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/start_game/<user><comp>')
-def start_game(user,comp):
-    g = Game(user, comp)
-    return g
+# @app.route('/start_game/<user><comp>')
+# def start_game(user,comp):
+#     g = Game(user, comp)
+#     return g
 
-@app.route('/update_board/<game><val><int:index>')
-def update_board(val, index):
-    status = g.update_board(val,index)
-    return status
+# @app.route('/update_board/<game><val><int:index>')
+# def update_board(val, index):
+#     status = g.update_board(val,index)
+#     return status
 
 class Game():
 

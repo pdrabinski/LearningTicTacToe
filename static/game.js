@@ -31,14 +31,35 @@ function initGame(id) {
   if (id === 'x') {
     game.user = '<span>X</span>';
     game.computer = '<span>O</span>';
-    setCurrPl('user')
-    $.get('/start_game/', {user:'x', comp:'o'});
-    console.log('user is x, computer is o');
+    setCurrPl('user');
+    console.log('improved request');
+    $.ajax({
+      method: "POST",
+      url: "/start_game", 
+      data: {user:'x',comp:'o'},
+      dataType: "string",
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
   } else if (id === 'o') {
     game.user = '<span>O</span>';
     game.computer = '<span>X</span>';
-    $.get('/start_game/', {user:'o', comp:'x'});
-    console.log('computer is x, user is o');
+    $.ajax({
+      method: "POST",
+      url: "/start_game", 
+      data: {user:'o',comp:'x'},
+      dataType: "string",
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
     setCurrPl('computer');
     comp();
     }
@@ -51,7 +72,9 @@ function setCurrPl(curr) {
 function preprocess_move(id) {
   id = id.data.param1;
   if ($('#' + id).html() != game.user && $('#' + id).html() != game.computer) {
-    update_board(id);
+    if (game.currentPlayer != 'computer') {
+      update_board(id);
+    }
   }
 }
 
@@ -69,7 +92,7 @@ function update_board(id) {
       is_it_a_draw();
       if (game.currentPlayer == 'user') {
         setCurrPl('computer');
-        setTimeout(comp, 300);
+        setTimeout(comp, 2000);
       }
       else {
         setCurrPl('user');
@@ -78,6 +101,7 @@ function update_board(id) {
     else {
       return;
     }
+    console.log("current player", game.currentPlayer)
 }
     
 function comp() {
