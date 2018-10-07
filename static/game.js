@@ -43,6 +43,7 @@ function initGame(id) {
       },
       error: function(error) {
         console.log(error);
+        initGame(id);
       }
     });
   } else if (id === 'o') {
@@ -58,6 +59,7 @@ function initGame(id) {
       },
       error: function(error) {
         console.log(error);
+        initGame(id);
       }
     });
     setCurrPl('computer');
@@ -80,6 +82,7 @@ function preprocess_move(id) {
 
 function update_board(id) {
     if (game.currentPlayer == 'user') {
+
         $('#' + id).html(game.user);
     }
     else if (game.currentPlayer == 'computer') {

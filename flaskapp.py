@@ -21,7 +21,7 @@ def start_game():
 #     g.game = game
 #     return "true"
 
-@app.route('/update_board/<val><int:index>')
+@app.route('/update_board/')
 def update_board(val, index):
     game = g.game
     status = game.update_board(val,index)
