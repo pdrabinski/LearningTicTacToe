@@ -95,7 +95,7 @@ function update_board(id) {
       is_it_a_draw();
       if (game.currentPlayer == 'user') {
         setCurrPl('computer');
-        setTimeout(comp, 2000);
+        setTimeout(comp, 300);
       }
       else {
         setCurrPl('user');

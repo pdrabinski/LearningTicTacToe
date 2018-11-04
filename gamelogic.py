@@ -1,17 +1,7 @@
 import numpy as np
-from flask import Flask
-app = Flask(__name__)
+# from flask import Flask
+# app = Flask(__name__)
 
-
-# @app.route('/start_game/<user><comp>')
-# def start_game(user,comp):
-#     g = Game(user, comp)
-#     return g
-
-# @app.route('/update_board/<game><val><int:index>')
-# def update_board(val, index):
-#     status = g.update_board(val,index)
-#     return status
 
 class Game():
 
@@ -20,7 +10,15 @@ class Game():
         self.turns = 0
         self.comp = comp
         self.user = user
+
+    def update_game(self,board,turns):
+        self.board = board
+        self.turns = turns
+
+    def get_comp_move(self):
+        return move
     
+    ## Might not need
     def update_board(self, val, index):
         row = (val-1) // 3
         col = (val-1) % 3
@@ -31,6 +29,7 @@ class Game():
         else:
             return False
 
+    ## probably don't need
     def check_winner(self):
         for row in self.board:
             if np.all(row == self.comp):
